@@ -1,0 +1,75 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 9/2/25, 11:04 AM
+Description: Initializing game
+
+java.lang.UnsatisfiedLinkError: Failed to locate library: lwjgl.dll
+	at org.lwjgl.system.Library.loadSystem(Library.java:174)
+	at org.lwjgl.system.Library.loadSystem(Library.java:64)
+	at org.lwjgl.system.Library.<clinit>(Library.java:52)
+	at org.lwjgl.glfw.GLFW.<clinit>(GLFW.java:30)
+	at org.lwjgl.opengl.Display.getAvailableDisplayModes(Display.kt:205)
+	at org.lwjgl.opengl.Display.getDesktopDisplayMode(Display.kt:46)
+	at optifine.Config.initGameSettings(Config.java:131)
+	at net.minecraft.client.settings.GameSettings.<init>(GameSettings.java:292)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:398)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:329)
+	at net.minecraft.client.main.Main.main(Main.java:115)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at org.lwjgl.system.Library.loadSystem(Library.java:174)
+	at org.lwjgl.system.Library.loadSystem(Library.java:64)
+	at org.lwjgl.system.Library.<clinit>(Library.java:52)
+	at org.lwjgl.glfw.GLFW.<clinit>(GLFW.java:30)
+	at org.lwjgl.opengl.Display.getAvailableDisplayModes(Display.kt:205)
+	at org.lwjgl.opengl.Display.getDesktopDisplayMode(Display.kt:46)
+	at optifine.Config.initGameSettings(Config.java:131)
+	at net.minecraft.client.settings.GameSettings.<init>(GameSettings.java:292)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:398)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:329)
+	at net.minecraft.client.main.Main.main(Main.java:115)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.8
+	Operating System: Windows 11 (amd64) version 10.0
+	CPU: <unknown>
+	Java Version: 11.0.16, JetBrains s.r.o.
+	Java VM Version: Dynamic Code Evolution 64-Bit Server VM (mixed mode), JetBrains s.r.o.
+	Memory: 363503488 bytes (346 MB) / 532676608 bytes (508 MB) up to 8516534272 bytes (8122 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: nekito
+	LWJGL: 3.3.6-snapshot
+	OpenGL: ~~ERROR~~ NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+	GL Caps: 
+	Using VBOs: ~~ERROR~~ NullPointerException: null
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: ~~ERROR~~ NullPointerException: null
+	Current Language: ~~ERROR~~ NullPointerException: null
+	Profiler Position: N/A (disabled)
+	CPU: <unknown>
+	OptiFine Version: OptiFine_1.8.8_HD_U_H8
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: null
+	OpenGlRenderer: null
+	OpenGlVendor: null
+	CpuCount: 0

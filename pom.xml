@@ -1,398 +1,380 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>wtf.norma</groupId>
-  <artifactId>nekito</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <lwjgl.version>3.3.2</lwjgl.version>
-  </properties>
-
-
-
-  <repositories>
-    <repository>
-      <id>jitpack</id>
-      <url>https://jitpack.io</url>
-    </repository>
-    <repository>
-      <id>mvnrepository</id>
-      <url>https://repo1.maven.org/maven2//</url>
-    </repository>
-    <repository>
-      <id>com.viaversion</id>
-      <url>https://repo.viaversion.com</url>
-    </repository>
-    <repository>
-      <id>minecraft</id>
-      <url>https://libraries.minecraft.net/</url>
-    </repository>
-    <repository>
-      <id>litarvan</id>
-      <url>https://litarvan.github.io/maven</url>
-    </repository>
-  </repositories>
-
-
-
-  <dependencies>
-
-      <dependency>
-          <groupId>org.reflections</groupId>
-          <artifactId>reflections</artifactId>
-          <version>0.10.2</version>
-      </dependency>
-
-<!--    decided to include lombok to remove boilerplate code. performance may suffer a bit but code readability is way better  -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.28</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.github.ZeroMemes</groupId>
-      <artifactId>Alpine</artifactId>
-      <version>3.1.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>discord-rpc</artifactId>
-      <groupId>com.github.Vatuu</groupId>
-      <version>1.6.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.paulscode</groupId>
-      <artifactId>codecjorbis</artifactId>
-      <version>20101023</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.paulscode</groupId>
-      <artifactId>codecwav</artifactId>
-      <version>20101023</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.paulscode</groupId>
-      <artifactId>libraryjavasound</artifactId>
-      <version>20101123</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.paulscode</groupId>
-      <artifactId>soundsystem</artifactId>
-      <version>20120107</version>
-    </dependency>
-
-      <dependency>
-          <groupId>cwel1</groupId>
-          <artifactId>cwel12</artifactId>
-          <version>cwel13</version>
-          <systemPath>${basedir}/libs/windows/lwjgl-glfw-natives-windows.jar</systemPath>
-          <scope>system</scope>
-      </dependency>
-
-
-      <dependency>
-          <groupId>cweaghl21</groupId>
-          <artifactId>cwge2l12</artifactId>
-          <version>cwelaf213</version>
-          <systemPath>${basedir}/libs/windows/lwjgl-natives-windows.jar</systemPath>
-          <scope>system</scope>
-      </dependency>
-
-      <dependency>
-          <groupId>cwesl21</groupId>
-          <artifactId>cwef2l12</artifactId>
-          <version>cwelf213</version>
-          <systemPath>${basedir}/libs/windows/lwjgl-openal-natives-windows.jar</systemPath>
-          <scope>system</scope>
-      </dependency>
-
-      <dependency>
-          <groupId>cwzel21</groupId>
-          <artifactId>cwe2lz12</artifactId>
-          <version>cwel2z13</version>
-          <systemPath>${basedir}/libs/windows/lwjgl-opengl-natives-windows.jar</systemPath>
-          <scope>system</scope>
-      </dependency>
-
-
-
-
-
-
-
-      <dependency>
-      <groupId>org.lwjgl</groupId>
-      <artifactId>lwjgl-openal</artifactId>
-      <version>3.3.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-common</artifactId>
-      <version>1.9.0-RC</version>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-jdk8</artifactId>
-      <version>1.9.0-RC</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.l33tlabs.twl</groupId>
-      <artifactId>pngdecoder</artifactId>
-      <version>1.0</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.json/json -->
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20230618</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>authlib</artifactId>
-      <groupId>com.mojang</groupId>
-      <version>1.5.25</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>commons-codec</artifactId>
-      <groupId>commons-codec</groupId>
-      <version>1.15</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>commons-compress</artifactId>
-      <groupId>org.apache.commons</groupId>
-      <version>1.20</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>commons-io</artifactId>
-      <groupId>commons-io</groupId>
-      <version>2.8.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>commons-lang3</artifactId>
-      <groupId>org.apache.commons</groupId>
-      <version>3.11</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>commons-logging</artifactId>
-      <groupId>commons-logging</groupId>
-      <version>1.2</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>gson</artifactId>
-      <groupId>com.google.code.gson</groupId>
-      <version>2.8.6</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>guava</artifactId>
-      <groupId>com.google.guava</groupId>
-      <version>17.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>httpclient</artifactId>
-      <groupId>org.apache.httpcomponents</groupId>
-      <version>4.5.13</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>httpcore</artifactId>
-      <groupId>org.apache.httpcomponents</groupId>
-      <version>4.4.14</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>icu4j</artifactId>
-      <groupId>com.ibm.icu</groupId>
-      <version>68.2</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>jinput</artifactId>
-      <groupId>net.java.jinput</groupId>
-      <version>2.0.9</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>jinput-platform</artifactId>
-      <groupId>net.java.jinput</groupId>
-      <version>2.0.7</version>
-      <type>pom</type>
-    </dependency>
-
-    <dependency>
-      <artifactId>jna</artifactId>
-      <groupId>net.java.dev.jna</groupId>
-      <version>5.6.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>jna-platform</artifactId>
-      <groupId>net.java.dev.jna</groupId>
-      <version>5.6.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>jopt-simple</artifactId>
-      <groupId>net.sf.jopt-simple</groupId>
-      <version>5.0.4</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>jutils</artifactId>
-      <groupId>net.java.jutils</groupId>
-      <version>1.0.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>log4j-api</artifactId>
-      <groupId>org.apache.logging.log4j</groupId>
-      <version>2.17.1</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>log4j-core</artifactId>
-      <groupId>org.apache.logging.log4j</groupId>
-      <version>2.17.1</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>netty-all</artifactId>
-      <groupId>io.netty</groupId>
-      <version>4.0.25.Final</version>
-    </dependency>
-
-      <dependency>
-        <groupId>org.lwjgl</groupId>
-        <artifactId>lwjgl</artifactId>
-        <version>3.3.2</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.lwjgl</groupId>
-        <artifactId>lwjgl-glfw</artifactId>
-        <version>3.3.2</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.lwjgl</groupId>
-        <artifactId>lwjgl-opengl</artifactId>
-        <version>3.3.2</version>
-      </dependency>
-      <dependency>
-        <groupId>java3d</groupId>
-        <artifactId>vecmath</artifactId>
-        <version>1.3.1</version>
-      </dependency>
-
-    <dependency>
-      <groupId>org.yaml</groupId>
-      <artifactId>snakeyaml</artifactId>
-      <version>2.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.viaversion</groupId>
-      <artifactId>viaversion</artifactId>
-      <version>4.7.1-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.viaversion</groupId>
-      <artifactId>viarewind-core</artifactId>
-      <version>2.0.4-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.viaversion</groupId>
-      <artifactId>viabackwards</artifactId>
-      <version>4.7.0</version>
-    </dependency>
-
-
-    <dependency>
-      <groupId>com.github.oshi</groupId>
-      <artifactId>oshi-core</artifactId>
-      <version>5.5.0</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>vecmath</artifactId>
-      <groupId>javax.vecmath</groupId>
-      <version>1.5.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.ow2.asm</groupId>
-      <artifactId>asm</artifactId>
-      <version>9.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.ow2.asm</groupId>
-      <artifactId>asm-tree</artifactId>
-      <version>9.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>fr.litarvan</groupId>
-      <artifactId>openauth</artifactId>
-      <version>1.1.3</version>
-    </dependency>
-  </dependencies>
-
-
-  <developers>
-    <developer>
-      <id>Intexpression</id>
-      <name>Markus Ostryński</name>
-      <email>me@femboys.fun</email>
-      <url>https://github.com/intexpression</url>
-    </developer>
-    <developer>
-      <id>groszus</id>
-      <name>groszus</name>
-      <url>https://github.com/groszus</url>
-    </developer>
-    <developer>
-      <id>lekoz1337</id>
-      <name>lekoz</name>
-      <url>https://github.com/lekoz1337</url>
-    </developer>
-    <developer>
-      <id>Tecness</id>
-      <name>Tecnessino</name>
-      <url>https://github.com/tecnessino</url>
-    </developer>
-    <developer>
-      <id>DevOfDeath</id>
-      <name>Nick</name>
-    </developer>
-  </developers>
-
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>wtf.norma</groupId>
+    <artifactId>nekito</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <lwjgl.version>3.3.6</lwjgl.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>com.viaversion</id>
+            <url>https://repo.viaversion.com</url>
+        </repository>
+        <repository>
+            <id>minecraft</id>
+            <url>https://libraries.minecraft.net/</url>
+        </repository>
+        <repository>
+            <id>litarvan</id>
+            <url>https://litarvan.github.io/maven</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.lwjgl</groupId>
+                <artifactId>lwjgl-bom</artifactId>
+                <version>${lwjgl.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ZeroMemes</groupId>
+            <artifactId>Alpine</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>discord-rpc</artifactId>
+            <groupId>com.github.Vatuu</groupId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paulscode</groupId>
+            <artifactId>codecjorbis</artifactId>
+            <version>20101023</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paulscode</groupId>
+            <artifactId>codecwav</artifactId>
+            <version>20101023</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paulscode</groupId>
+            <artifactId>libraryjavasound</artifactId>
+            <version>20101123</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paulscode</groupId>
+            <artifactId>soundsystem</artifactId>
+            <version>20120107</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-openal</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-common</artifactId>
+            <version>1.9.0-RC</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>1.9.0-RC</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.l33tlabs.twl</groupId>
+            <artifactId>pngdecoder</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230618</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>authlib</artifactId>
+            <groupId>com.mojang</groupId>
+            <version>1.5.25</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-codec</artifactId>
+            <groupId>commons-codec</groupId>
+            <version>1.15</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-compress</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <version>1.20</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-io</artifactId>
+            <groupId>commons-io</groupId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-lang3</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <version>3.11</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>gson</artifactId>
+            <groupId>com.google.code.gson</groupId>
+            <version>2.8.6</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>guava</artifactId>
+            <groupId>com.google.guava</groupId>
+            <version>17.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <version>4.5.13</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>httpcore</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <version>4.4.14</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>icu4j</artifactId>
+            <groupId>com.ibm.icu</groupId>
+            <version>68.2</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jinput</artifactId>
+            <groupId>net.java.jinput</groupId>
+            <version>2.0.9</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jinput-platform</artifactId>
+            <groupId>net.java.jinput</groupId>
+            <version>2.0.7</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <artifactId>jna</artifactId>
+            <groupId>net.java.dev.jna</groupId>
+            <version>5.6.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jna-platform</artifactId>
+            <groupId>net.java.dev.jna</groupId>
+            <version>5.6.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jopt-simple</artifactId>
+            <groupId>net.sf.jopt-simple</groupId>
+            <version>5.0.4</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jutils</artifactId>
+            <groupId>net.java.jutils</groupId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>log4j-api</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <version>2.17.1</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>log4j-core</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <version>2.17.1</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>netty-all</artifactId>
+            <groupId>io.netty</groupId>
+            <version>4.0.25.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-glfw</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-opengl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>java3d</groupId>
+            <artifactId>vecmath</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viaversion</artifactId>
+            <version>4.7.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viarewind-core</artifactId>
+            <version>2.0.4-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viabackwards</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>vecmath</artifactId>
+            <groupId>javax.vecmath</groupId>
+            <version>1.5.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.litarvan</groupId>
+            <artifactId>openauth</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>windows-x64-natives</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                    <arch>amd64</arch>
+                </os>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.lwjgl</groupId>
+                    <artifactId>lwjgl</artifactId>
+                    <classifier>natives-windows</classifier>
+                </dependency>
+                <dependency>
+                    <groupId>org.lwjgl</groupId>
+                    <artifactId>lwjgl-glfw</artifactId>
+                    <classifier>natives-windows</classifier>
+                </dependency>
+                <dependency>
+                    <groupId>org.lwjgl</groupId>
+                    <artifactId>lwjgl-opengl</artifactId>
+                    <classifier>natives-windows</classifier>
+                </dependency>
+                <dependency>
+                    <groupId>org.lwjgl</groupId>
+                    <artifactId>lwjgl-openal</artifactId>
+                    <classifier>natives-windows</classifier>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+    <developers>
+        <developer>
+            <id>Intexpression</id>
+            <name>Markus Ostryński</name>
+            <email>me@femboys.fun</email>
+            <url>https://github.com/intexpression</url>
+        </developer>
+        <developer>
+            <id>groszus</id>
+            <name>groszus</name>
+            <url>https://github.com/groszus</url>
+        </developer>
+        <developer>
+            <id>lekoz1337</id>
+            <name>lekoz</name>
+            <url>https://github.com/lekoz1337</url>
+        </developer>
+        <developer>
+            <id>Tecness</id>
+            <name>Tecnessino</name>
+            <url>https://github.com/tecnessino</url>
+        </developer>
+        <developer>
+            <id>DevOfDeath</id>
+            <name>Nick</name>
+        </developer>
+    </developers>
 </project>
