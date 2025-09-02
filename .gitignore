@@ -23,3 +23,11 @@ work/ViaMCP/ViaLoadingBase/config.yml
 work/ViaMCP/ViaLoadingBase/config.yml
 work/ViaMCP/ViaLoadingBase/viarewind.yml
 work/ViaMCP/ViaLoadingBase/viaversion.yml
+/saves
+options.txt
+optionsof.txt
+/crash-reports
+usercache.json
+ViaMCP/ViaLoadingBase/config.yml
+ViaMCP/ViaLoadingBase/viarewind.yml
+ViaMCP/ViaLoadingBase/viaversion.yml

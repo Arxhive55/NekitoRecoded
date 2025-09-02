@@ -141,7 +141,6 @@ public enum Nekito implements Subscriber {
 
     public void setDisplay() throws IOException {
         Display.setTitle(String.format(name + " " + version + " " + "LWJGL " + Sys.getVersion()));
-        OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 
     public String checkos() {

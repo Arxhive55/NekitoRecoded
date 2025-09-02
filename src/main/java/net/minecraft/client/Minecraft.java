@@ -2587,7 +2587,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             public String call()
             {
-                return GL11.glGetString(GL11.GL_RENDERER) + " GL version " + GL11.glGetString(GL11.GL_VERSION) + ", " + GL11.glGetString(GL11.GL_VENDOR);
+                return "3.3.6";
             }
         });
         theCrash.getCategory().addCrashSectionCallable("GL Caps", new Callable<String>()
