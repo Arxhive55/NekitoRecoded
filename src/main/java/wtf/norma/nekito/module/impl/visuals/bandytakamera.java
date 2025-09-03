@@ -46,16 +46,4 @@ public class bandytakamera extends Module implements Subscriber {
         if (mc.gameSettings.thirdPersonView <= 0)
             RenderUtility.drawImage(new ResourceLocation("images/cwelowate/bandicam.png"), sr.getScaledWidth() / 2 - 200, 1, 400, 100, new Color(255, 255, 255));
     });
-
-//    @Override
-//    public void onEvent(Event e) {
-//        if (e instanceof EventRender2D) {
-//            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-//            if (mc.gameSettings.thirdPersonView <= 0) {
-//                RenderUtility.drawImage(new ResourceLocation("images/cwelowate/bandicam.png"), sr.getScaledWidth() / 2 - 200, 1, 400, 100, new Color(255, 255, 255));
-//            }
-//        }
-//    }
-
-
 }

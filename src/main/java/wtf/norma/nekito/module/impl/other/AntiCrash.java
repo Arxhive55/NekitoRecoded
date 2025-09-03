@@ -23,7 +23,7 @@ public class AntiCrash extends Module implements Subscriber {
 
 
     public AntiCrash() {
-        super("Optimizator", Category.OTHER, Keyboard.KEY_NONE);  // rofl kartofel
+        super("Anti Crash", Category.OTHER, Keyboard.KEY_NONE);  // rofl kartofel
         addSettings(armorstand, antiparticle, memorywyczyszczenie);
     }
 
@@ -74,48 +74,5 @@ public class AntiCrash extends Module implements Subscriber {
             mc.gameSettings.ofVoidParticles = false;
         }
     });
-
-//    public void onEvent(Event e) {
-//        if (e instanceof EventUpdate) {
-//
-//            if (mc.thePlayer == null || mc.theWorld == null) {
-//                return;
-//            }
-//
-//            //anti armorstand
-//            if (armorstand.isEnabled()) {
-//
-//                for (Entity cwel : mc.theWorld.loadedEntityList) {
-//
-//                    // CUZ OF  SOME  SERVERS "PROTECTION" $$$$$$$$$$$$$$
-//
-//                    if (cwel == null || !(cwel instanceof net.minecraft.entity.item.EntityArmorStand))
-//                        continue;
-//
-//                    mc.theWorld.removeEntity(cwel);
-//                    LoggingUtil.log("Removed " + cwel.getName());
-//                }
-//            }
-//
-//            //clean memory
-//
-//            if (memorywyczyszczenie.isEnabled()){
-//                System.gc(); // ok ok ok?
-//            }
-//
-//
-//
-//
-//            if (antiparticle.isEnabled()) {
-//                mc.gameSettings.ofVoidParticles = false;
-//            }
-//
-//
-//
-//
-//
-//
-//        }
-//    }
 
 }

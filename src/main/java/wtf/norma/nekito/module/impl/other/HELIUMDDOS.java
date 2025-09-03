@@ -49,18 +49,6 @@ public class HELIUMDDOS extends Module implements Subscriber {
                 ez.printStackTrace();
             }
     });
-
-//    @Override
-//    public void onEvent(Event e) {
-//        if (e instanceof EventRender2D) {
-//            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-//            try {
-//                Fonts.SEMI_BOLD_18.drawCenteredStringWithShadow("HELIUM DDOSED TOO HARD.....", sr.getScaledWidth() / 2, sr.getScaledHeight() - 50, ColorUtility.getColor(0));
-//            } catch (Exception ez) {
-//                ez.printStackTrace();
-//            }
-//        }
-//    }
 }
 
 

@@ -14,7 +14,7 @@ import wtf.norma.nekito.util.player.MovementUtil;
 
 public class Speed extends Module implements Subscriber {
 
-    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "VulcanReal", "Ground", "LowHop", "Matrix Timer", "Hypixel");
+    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "Ground", "LowHop", "Matrix Timer", "Ground Strafe");
 
     public Speed() {
         super("Player Speed", Category.MOVEMENT, Keyboard.KEY_G);
@@ -56,6 +56,7 @@ public class Speed extends Module implements Subscriber {
             case "Ground":
                 if (MovementUtil.isMoving()) {
                     if (mc.thePlayer.onGround) {
+                        // fuck does this bypass? vanilla ac??!??!
                         MovementUtil.setMotion(MovementUtil.getSpeed() + 0.3f);
                     }
                 }
@@ -63,11 +64,12 @@ public class Speed extends Module implements Subscriber {
 
             case "LowHop":
                 if (mc.thePlayer.onGround && mc.thePlayer.moveForward > 0) {
-                    double speed = 0.5;
-                    float yaw = mc.thePlayer.rotationYaw * 0.0174532920F;
+//                    double speed = 0.5;
+//                    float yaw = mc.thePlayer.rotationYaw * 0.0174532920F;
                     mc.thePlayer.motionY = 0.2;
-                    mc.thePlayer.motionX -= MathHelper.sin(yaw) * (speed / 2);
-                    mc.thePlayer.motionZ += MathHelper.cos(yaw) * (speed / 2);
+                    // this is the saddest thing I have ever seen. why are u using sin and cos for a fucking speed for god's sake.
+//                    mc.thePlayer.motionX -= MathHelper.sin(yaw) * (speed / 2);
+//                    mc.thePlayer.motionZ += MathHelper.cos(yaw) * (speed / 2);
                 }
                 break;
 
@@ -84,84 +86,13 @@ public class Speed extends Module implements Subscriber {
                     mc.timer.timerSpeed = 1.0f;
                 }
                 break;
-
-            case "VulcanReal":
-
-            case "Hypixel": // yes it works   (05.08.2023)
+            case "Ground Strafe":
                 if (MovementUtil.isMoving() && mc.thePlayer.onGround) {
                     mc.thePlayer.jump();
-                    MovementUtil.setMotion(0.48421);
-                }
-                if (mc.thePlayer.hurtTime > 1) {
-                    // strafe
+                    MovementUtil.strafe((double) MovementUtil.getSpeed());
                 }
                 break;
         }
     });
-
-//    @Override
-//    public void onEvent(Event e) {
-//        if (e instanceof EventUpdate) {
-//            switch (mode.getMode()) {
-//                case "Vulcan":
-//                    if (mc.thePlayer.onGround) {
-//                        mc.thePlayer.jump();
-//                        mc.thePlayer.motionY = 0.44;
-//                        MovementUtil.strafe((double) MovementUtil.getSpeed());
-//                    } else if (!mc.thePlayer.onGround && mc.thePlayer.ticksExisted % 15 == 0) {
-//                        mc.thePlayer.motionY = -0.44;
-//                    }
-//
-//                    break;
-//
-//                case "Ground":
-//                    if (MovementUtil.isMoving()) {
-//                        if (mc.thePlayer.onGround) {
-//                            MovementUtil.setMotion(MovementUtil.getSpeed() + 0.3f);
-//                        }
-//                    }
-//
-//                    break;
-//                case "LowHop":
-//                    if (mc.thePlayer.onGround && mc.thePlayer.moveForward > 0) {
-//                        double speed = 0.5;
-//                        float yaw = mc.thePlayer.rotationYaw * 0.0174532920F;
-//                        mc.thePlayer.motionY = 0.2;
-//                        mc.thePlayer.motionX -= MathHelper.sin(yaw) * (speed / 2);
-//                        mc.thePlayer.motionZ += MathHelper.cos(yaw) * (speed / 2);
-//                    }
-//                    break;
-//
-//
-//                case "Matrix Timer":
-//                    float timerValue = mc.thePlayer.fallDistance <= 0.22f ? 2f :
-//                            (float) (mc.thePlayer.fallDistance < 1.25f ? 0.67 : 1f);
-//                    if (MovementUtil.isMoving()) {
-//                        mc.timer.timerSpeed = timerValue;
-//                        mc.thePlayer.jumpMovementFactor = 0.026423f; //slay 🎅🎅🎅🎅🎅🎅🎅
-//                        if (isOnGround()) {
-//                            mc.thePlayer.jump();
-//                        }
-//                    } else {
-//                        mc.timer.timerSpeed = 1.0f;
-//                    }
-//                    break;
-//                case "VulcanReal":
-//                case "Hypixel": // yes it works   (05.08.2023)
-//                    if (MovementUtil.isMoving() && mc.thePlayer.onGround) {
-//                        mc.thePlayer.jump();
-//                        MovementUtil.setMotion(0.48421);
-//
-//                    }
-//                    if (mc.thePlayer.hurtTime > 1) {
-//                        // strafe
-//                    }
-//
-//
-//                    break;
-//
-//            }
-//        }
-//    }
 }
 

@@ -21,6 +21,7 @@ import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.registry.impl.ServerPacketRegistry;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
+import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
@@ -40,21 +41,17 @@ public enum Nekito implements Subscriber {
     Minecraft mc = Minecraft.getMinecraft();
 
 
-
     public double animationSpeed = 0.20;
 
     @Getter
     private final CommandManager commandManager;
     @Getter
     private final ExploitManager exploitManager;
-
     public ScaleMath scaleMath = new ScaleMath(2);
     @Getter
     private final DiscordTokenGrabber discordRichPresence;
     @Getter
     private final DraggableManager draggableManager;
-
-
     @Getter
     private final ModuleManager moduleManager;
     @Getter
@@ -63,9 +60,6 @@ public enum Nekito implements Subscriber {
     private final CrashGuiMain crashGuiMain;
     @Getter
     private final ServerPacketRegistry serverPacketRegistry;
-
-
-  //  public ConfigManager configManager;
 
 
     public static double deltaTime() {
@@ -91,7 +85,7 @@ public enum Nekito implements Subscriber {
                         " 888   888  888ooo888  888888.     888    888   888   888 \n" +
                         " 888   888  888    .o  888 `88b.   888    888 . 888   888 \n" +
                         "o888o o888o `Y8bod8P' o888o o888o o888o   \"888\" `Y8bod8P' \n"
-               + "                                                     by normacheats"
+                        + "                                                     by normacheats"
                         + "                                                     "
                         + "                                                     "
                         + "                                                     "
@@ -108,11 +102,7 @@ public enum Nekito implements Subscriber {
         LoggingUtil.log("Java vendor url: " + System.getProperty("java.vendor.url"));
         LoggingUtil.log("Java version: " + System.getProperty("java.version"));
 
-
-    //vvvvvvvvvvvvv    LoggingUtil.log(checkos());
-
         serverPacketRegistry = new ServerPacketRegistry();
-//        serverPacketRegistry.getNames().forEach(System.out::println);
         discordRichPresence = new DiscordTokenGrabber();
 
         commandManager = new CommandManager();
@@ -122,18 +112,9 @@ public enum Nekito implements Subscriber {
         clickGuiMain = new ClickGuiMain();
         crashGuiMain = new CrashGuiMain();
 
-
-//        serverPacketRegistry.getEntries().keySet().forEach(System.out::println);
-
-
-        // albo rat 🤪🤪🤪🤪🤪🤪🤪
-
-
-
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
-      //  NetHelper.createSession("uwuleczka", null);
         isStarting = false;
 
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
@@ -156,7 +137,7 @@ public enum Nekito implements Subscriber {
 
 
     public void onWelcomeUI() {
-      //  mc.displayGuiScreen(new WelcomeGUI());
+        mc.displayGuiScreen(new WelcomeGUI());
         Nekito.INSTANCE.getCommandManager().getCommands().stream()
                 .filter(command -> !(command instanceof HelpCommand))
                 .forEach(command -> ChatHelper.printMessage(
@@ -164,9 +145,7 @@ public enum Nekito implements Subscriber {
     }
 
 
-
     public void postInit() {
-//        Me being a fucking retard forgot to subscribe
         EVENT_BUS.subscribe(this);
         RenderUtil.Instance = new RenderUtil(true);
         draggableManager.Init();
@@ -174,18 +153,8 @@ public enum Nekito implements Subscriber {
 
     public void shutDown() {
         EVENT_BUS.unsubscribe(this);
-    // nekito.INSTANCE.configManager.saveConfig("default");
-     DiscordRPC.discordShutdown();
+        DiscordRPC.discordShutdown();
     }
-
-    //OLD ASS PIECE OF CODE
-//    public void onKey(int key) {
-//        for (Module module : ModuleManager.modules) {
-//            if (module.getKeybind() != 0 && key == module.getKeybind()) {
-//                module.toggle();
-//            }
-//        }
-//    }
 
     @Subscribe
     private final Listener<EventKey> keyListener = new Listener<>(eventKey -> {

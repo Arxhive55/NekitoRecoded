@@ -37,9 +37,11 @@ public class CustomDisabler extends Module implements Subscriber {
     @Subscribe
     private final Listener<PacketEvent> listener = new Listener<>(event -> {
 
-        this.settingsList.forEach(setting -> {
-            if (event.getPacket().equals(ServerPacketRegistry.entries.get(setting.getName())) && setting.isEnabled()) event.setCancelled(true);
-        });
+        // what the fuck is this. 😭
+
+//        this.settingsList.forEach(setting -> {
+//            if (event.getPacket().equals(ServerPacketRegistry.entries.get(setting.getName())) && setting.isEnabled()) event.setCancelled(true);
+//        });
         
     });
 

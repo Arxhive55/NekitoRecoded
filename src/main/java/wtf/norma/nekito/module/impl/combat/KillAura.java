@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
@@ -31,16 +32,14 @@ public class KillAura extends Module implements Subscriber {
 
     public TimerUtility t = new TimerUtility();
 
-    public Tickbase cweluch = new Tickbase();
-    public NumberSetting ZASIEGCHUJA = new NumberSetting("Range", 3, 1, 6, 0.5f);
-    public NumberSetting discord = new NumberSetting("APS", 12, 1, 20, 0.1f);
-    public ModeSetting rotations = new ModeSetting("Rotations", "Basic", "Basic", "None");
+    public NumberSetting range = new NumberSetting("Range", 3, 1, 6, 0.5f);
+    public NumberSetting aps = new NumberSetting("APS", 12, 1, 20, 0.1f);
+    public ModeSetting rotations = new ModeSetting("Rotations", "Recoded", "Recoded", "Basic", "None");
     public BooleanSetting onlyPlayers = new BooleanSetting("Only players", true);
 
-    //
     public KillAura() {
         super("KillAura", Category.COMBAT, Keyboard.KEY_R);
-        this.addSettings(rotations, ZASIEGCHUJA, discord, onlyPlayers);
+        this.addSettings(rotations, range, aps, onlyPlayers);
     }
 
     @Override
@@ -57,6 +56,9 @@ public class KillAura extends Module implements Subscriber {
     }
 
     public float[] rotations(EntityLivingBase entity) {
+
+        // fuck ass rotations. -Arxhive55
+
         double x = entity.posX - mc.thePlayer.posX;
         double y = entity.posY - (mc.thePlayer.posY + mc.thePlayer.getEyeHeight()) + 1.5;
         double z = entity.posZ - mc.thePlayer.posZ;
@@ -72,18 +74,16 @@ public class KillAura extends Module implements Subscriber {
     @Subscribe
     private final Listener<EventMotion> listener = new Listener<>(event -> {
         if (event.isPre()) {
-            target = getTarget(ZASIEGCHUJA.getValue());
+            target = getTarget(range.getValue());
             if (target != null) {
                 if (rotate(target, event)) {
-                    if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
-                    }
-                    if (t.hasReached((long) (1000 / discord.getValue()))) {
+                    if (t.hasReached((long) (1000 / aps.getValue()))) {
                         if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
                             PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
                             PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
                         }
                         mc.thePlayer.swingItem();
-                        mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+                        mc.getNetHandler().getNetworkManager().sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
                         t.reset();
                     }
                 }
@@ -91,35 +91,35 @@ public class KillAura extends Module implements Subscriber {
         }
     });
 
-//    @Override
-//    public void onEvent(Event e) {
-//        if (e instanceof EventMotion) {
-//            if (e.isPre()) {
-//                target = getTarget(ZASIEGCHUJA.getValue());
-//                if (target != null) {
-//                    if (rotate(target, (EventMotion) e)) {
-//                        if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
-//                        }
-//                        if (t.hasReached((long) (1000 / discord.getValue()))) {
-//                            if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
-//                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
-//                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
-//                            }
-//                            mc.thePlayer.swingItem();
-//                            mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
-//                            t.reset();
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    public float[] recodedRotations(EntityLivingBase entity) {
 
+        // non fuck ass rotations. -Arxhive55
+
+        final Vec3 eyePos = mc.thePlayer.getPositionEyes(1.0f);
+        final double diffX = entity.posX - eyePos.xCoord;
+        final double diffY = entity.posY + entity.getEyeHeight() / 1.2f - eyePos.yCoord;
+        final double diffZ = entity.posZ - eyePos.zCoord;
+        final double distXZ = MathHelper.sqrt_double(diffX * diffX + diffZ * diffZ);
+        float yaw = (float) (Math.atan2(diffZ, diffX) * 57.29577951308232) - 90.0f;
+        float pitch = (float) (-(Math.atan2(diffY, distXZ) * 57.29577951308232));
+        yaw += (float) ((Math.random() - 0.5) * 2 * 2);
+        pitch += (float) ((Math.random() - 0.5) * 2 * 2);
+        pitch = Math.max(-90F, Math.min(90F, pitch));
+        return new float[] {yaw, pitch};
+    }
 
     public boolean rotate(EntityLivingBase target, EventMotion event) {
+        float[] rots;
         switch (rotations.getMode()) {
             case "Basic":
-                float[] rots = rotations(target);
+                rots = rotations(target);
+                event.setYaw(rots[0]);
+                event.setPitch(rots[0]);
+                mc.thePlayer.rotationYawHead = rots[0];
+                mc.thePlayer.renderYawOffset = rots[0];
+                break;
+            case "Recoded":
+                rots = recodedRotations(target);
                 event.setYaw(rots[0]);
                 event.setPitch(rots[0]);
                 mc.thePlayer.rotationYawHead = rots[0];
@@ -130,20 +130,6 @@ public class KillAura extends Module implements Subscriber {
         }
         return true;
     }
-//    public boolean rotate(EntityLivingBase target, EventMotion event) {
-//        switch (rotations.getMode()) {
-//            case "Basic":
-//                float[] rots = rotations(target);
-//                event.setYaw(rots[0]);
-//                event.setPitch(rots[0]);
-//                mc.thePlayer.rotationYawHead = rots[0];
-//                mc.thePlayer.renderYawOffset = rots[0];
-//                break;
-//            case "None":
-//                break;
-//        }
-//        return true;
-//    }
 
 
     public EntityLivingBase getTarget(double range) {
