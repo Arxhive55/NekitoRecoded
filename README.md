@@ -1,20 +1,14 @@
-# nekito
+# Nekito Recoded!
 
-Open-Source Hacked/Crash client.
-Special thanks to narumii for the base
+Open-Source all purpose client (recoded for everything).
+Special thanks to narumii for the base.
+
+I love fixing random shiz that the og dev team broke!
 
 
 
-
-
-# Discord
+# OLD Client Discord
 <a href="https://discord.gg/34BZs4ZPB6"><img src="https://invidget.switchblade.xyz/34BZs4ZPB6" alt="https://discord.gg/34BZs4ZPB6"/></a>
-
-
-# Website
-You can check our website by clicking [here](https://astal.store)
-
-
 
 
 
@@ -25,16 +19,7 @@ Found a bug or have an idea for a new feature? You can let us know by clicking [
 # Bugs
 Known bugs:
 
-> ~~resourcepacks not working~~ (fixed)
-
-
-> ~~sound not working (frick u openal)~~ (probably fixed) 
-
-
-> not running on mac (idk why :[ )
-
-
-> ~~open on lan button (ill just remove it useless)~~ (fixed)
+random modules not working - in progress.
 
 
 # ClickGui
